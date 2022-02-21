@@ -16,29 +16,37 @@ namespace EmpWage_OOPS
             const int WAGEPERHOUR = 20;
             const int FULLDAYHOUR = 8;
             const int PARTTIMEHOUR = 4;
+            const int TOTALWORKINGDAYS = 20;
             //VARIABLES
             int empCheck;
             int workingHour;
-
-            Random random = new Random();
-            empCheck = random.Next(0, 3);
-            //Checking Absent & present & assigning workinghours.
-            switch (empCheck)
+            int workingdays = 0;
+            int totalWorkingHours = 0;
+            //Monthly Wage Computation
+            while (workingdays < TOTALWORKINGDAYS)
             {
-                case ISPRESENT:
-                    Console.WriteLine("Employee is present");
-                    workingHour = FULLDAYHOUR;
-                    break;
-                case PARTTIME:
-                    Console.WriteLine("Employee is Part Time");
-                    workingHour = PARTTIMEHOUR;
-                    break;
-                default:
-                    Console.WriteLine("Employee is absent");
-                    workingHour = 0;
-                    break;
+                Random random = new Random();
+                empCheck = random.Next(0, 3);
+                //Checking Absent & present & assigning workinghours.
+                switch (empCheck)
+                {
+                    case ISPRESENT:
+                        Console.WriteLine("Employee is present");
+                        workingHour = FULLDAYHOUR;
+                        break;
+                    case PARTTIME:
+                        Console.WriteLine("Employee is Part Time");
+                        workingHour = PARTTIMEHOUR;
+                        break;
+                    default:
+                        Console.WriteLine("Employee is absent");
+                        workingHour = 0;
+                        break;
+                }
+                totalWorkingHours = totalWorkingHours + workingHour;
+            workingdays++;
             }
-            Console.WriteLine($"Daily EmpWage is {workingHour * WAGEPERHOUR}");
+            Console.WriteLine($"Daily EmpWage is {totalWorkingHours * WAGEPERHOUR}");
 
         }
     }
