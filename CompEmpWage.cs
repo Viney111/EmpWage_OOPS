@@ -11,44 +11,42 @@ namespace EmpWage_OOPS
         //CONSTATNTS
         const int ISPRESENT = 1;
         const int PARTTIME = 2;
-        const int WAGEPERHOUR = 20;
         const int FULLDAYHOUR = 8;
-        const int PARTTIMEHOUR = 8;
-        const int TOTALWORKINGDAYS = 20;
-        const int TOTALWORKINGHOURS = 100;
-        //VARIABLES
-        int empCheck;
-        int workingHour;
-        int workingdays = 0;
-        int totalWorkingHours = 0;
-
-        public void ComputeWage()
+        const int PARTTIMEHOUR = 4;
+        public void ComputeWage(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName)
         {
+            //VARIABLES
+            int workingdays = 0;
+            int workingHours = 0;
             //Monthly Wage Computation
-            while (workingdays < TOTALWORKINGDAYS && totalWorkingHours < TOTALWORKINGHOURS)
+            while (workingdays < totalWorkingDays && workingHours <= totalWorkingHours)
             {
+                //VARIABLES
+                int empCheck;
+                int workingHourPerDay;
+
                 Random random = new Random();
                 empCheck = random.Next(0, 3);
                 //Checking Absent & present & assigning workinghours.
                 switch (empCheck)
                 {
                     case ISPRESENT:
-                        Console.WriteLine("Employee is present");
-                        workingHour = FULLDAYHOUR;
+                        //Console.WriteLine("Employee is present");
+                        workingHourPerDay = FULLDAYHOUR;
                         break;
                     case PARTTIME:
-                        Console.WriteLine("Employee is Part Time");
-                        workingHour = PARTTIMEHOUR;
+                        //Console.WriteLine("Employee is Part Time");
+                        workingHourPerDay = PARTTIMEHOUR;
                         break;
                     default:
-                        Console.WriteLine("Employee is absent");
-                        workingHour = 0;
+                        //Console.WriteLine("Employee is absent");
+                        workingHourPerDay = 0;
                         break;
                 }
-                totalWorkingHours = totalWorkingHours + workingHour;
+                workingHours = workingHours + workingHourPerDay;
                 workingdays++;
             }
-            Console.WriteLine($"Daily EmpWage is {totalWorkingHours * WAGEPERHOUR}");
+            Console.WriteLine($"Monthly EmpWage of {companyName} employee is {totalWorkingHours * wagePerHour}");
         }
     }
 }
