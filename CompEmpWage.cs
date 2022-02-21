@@ -18,6 +18,7 @@ namespace EmpWage_OOPS
         int totalWorkingDays;
         int wagePerHour;
         string companyName;
+        int totalWage;
 
         public CompEmpWage(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName)
         {
@@ -25,6 +26,7 @@ namespace EmpWage_OOPS
             this.totalWorkingDays = totalWorkingDays;
             this.wagePerHour = wagePerHour;
             this.companyName = companyName;
+
         }
 
         public void ComputeWage()
@@ -59,7 +61,8 @@ namespace EmpWage_OOPS
                 workingHours = workingHours + workingHourPerDay;
                 workingdays++;
             }
-            Console.WriteLine($"Monthly EmpWage of {companyName} employee is {workingHours * wagePerHour}");
+            totalWage = workingHours * wagePerHour;
+            Console.WriteLine($"Employee from {companyName} company earns {totalWage}");
         }
     }
 }
