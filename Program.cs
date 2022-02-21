@@ -12,21 +12,26 @@ namespace EmpWage_OOPS
             Console.WriteLine("Welcome to EmpWage by OOPS Program");
             //CONSTATNTS
             const int ISPRESENT = 1;
-            const int ISABSENT = 0;
+            const int PARTTIME = 2;
             const int WAGEPERHOUR = 20;
             const int FULLDAYHOUR = 8;
+            const int PARTTIMEHOUR = 4;
             //VARIABLES
             int empCheck;
             int workingHour;
 
             Random random = new Random();
-            empCheck = random.Next(0, 2);
+            empCheck = random.Next(0, 3);
             //Checking Absent & present & assigning workinghours.
             switch (empCheck)
             {
                 case ISPRESENT:
                     Console.WriteLine("Employee is present");
                     workingHour = FULLDAYHOUR;
+                    break;
+                case PARTTIME:
+                    Console.WriteLine("Employee is Part Time");
+                    workingHour = PARTTIMEHOUR;
                     break;
                 default:
                     Console.WriteLine("Employee is absent");
