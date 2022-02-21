@@ -15,15 +15,16 @@ namespace EmpWage_OOPS
             const int PARTTIME = 2;
             const int WAGEPERHOUR = 20;
             const int FULLDAYHOUR = 8;
-            const int PARTTIMEHOUR = 4;
+            const int PARTTIMEHOUR = 8;
             const int TOTALWORKINGDAYS = 20;
+            const int TOTALWORKINGHOURS = 100;
             //VARIABLES
             int empCheck;
             int workingHour;
             int workingdays = 0;
             int totalWorkingHours = 0;
             //Monthly Wage Computation
-            while (workingdays < TOTALWORKINGDAYS)
+            while (workingdays < TOTALWORKINGDAYS && totalWorkingHours < TOTALWORKINGHOURS)
             {
                 Random random = new Random();
                 empCheck = random.Next(0, 3);
