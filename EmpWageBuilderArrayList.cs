@@ -21,51 +21,54 @@ namespace EmpWage_OOPS
         {
             empWageArrayList.Add(new CompEmpWage(totalWorkingHours, totalWorkingDays, wagePerHour, companyName));
         }
-        public void GetEmpWage()
+        //Method to compute specific companyWage when queried by Company.
+        public void GetEmpWage(string comName)
         {
             foreach(var emp in empWageArrayList)
             {
-                ComputeWage((CompEmpWage)emp);
+                ComputeWage((CompEmpWage)emp,comName);
             }
         }
-        public void ComputeWage(CompEmpWage e1)
+        public void ComputeWage(CompEmpWage e1, string compName)
         {
-            //VARIABLES
-            int workingdays = 0; int workingHours = 0;
-            //Monthly Wage Computation
-            while (workingdays < e1.totalWorkingDays && workingHours <= e1.totalWorkingHours)
+            if (e1.companyName == compName)
             {
                 //VARIABLES
-                int empCheck;
-                int workingHourPerDay;
-
-                Random random = new Random();
-                empCheck = random.Next(0, 3);
-                //Checking Absent & present & assigning workinghours.
-                switch (empCheck)
+                int workingdays = 0; int workingHours = 0;
+                //Monthly Wage Computation
+                while (workingdays < e1.totalWorkingDays && workingHours <= e1.totalWorkingHours)
                 {
-                    case ISPRESENT:
-                        //Console.WriteLine("Employee is present");
-                        workingHourPerDay = FULLDAYHOUR;
-                        break;
-                    case PARTTIME:
-                        //Console.WriteLine("Employee is Part Time");
-                        workingHourPerDay = PARTTIMEHOUR;
-                        break;
-                    default:
-                        //Console.WriteLine("Employee is absent");
-                        workingHourPerDay = 0;
-                        break;
-                }
-                e1.dailyWage[workingdays] = workingHourPerDay * e1.wagePerHour;
-                Console.WriteLine($"Employee from {e1.companyName} earns {e1.dailyWage[workingdays]} at day {workingdays + 1}.");
-            workingHours = workingHours + workingHourPerDay;
-            workingdays++;
-            }
-            e1.totalWage = workingHours * e1.wagePerHour;
-        Console.WriteLine($"Employee from {e1.companyName} company earns {e1.totalWage}");
-        }
+                    //VARIABLES
+                    int empCheck;
+                    int workingHourPerDay;
 
+                    Random random = new Random();
+                    empCheck = random.Next(0, 3);
+                    //Checking Absent & present & assigning workinghours.
+                    switch (empCheck)
+                    {
+                        case ISPRESENT:
+                            //Console.WriteLine("Employee is present");
+                            workingHourPerDay = FULLDAYHOUR;
+                            break;
+                        case PARTTIME:
+                            //Console.WriteLine("Employee is Part Time");
+                            workingHourPerDay = PARTTIMEHOUR;
+                            break;
+                        default:
+                            //Console.WriteLine("Employee is absent");
+                            workingHourPerDay = 0;
+                            break;
+                    }
+                    e1.dailyWage[workingdays] = workingHourPerDay * e1.wagePerHour;
+                    //Console.WriteLine($"Employee from {e1.companyName} earns {e1.dailyWage[workingdays]} at day {workingdays + 1}.");
+                    workingHours = workingHours + workingHourPerDay;
+                    workingdays++;
+                }
+                e1.totalWage = workingHours * e1.wagePerHour;
+                Console.WriteLine($"Employee from {e1.companyName} company earns {e1.totalWage}");
+            }
+        }
 
     }
 }

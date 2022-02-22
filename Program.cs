@@ -13,9 +13,10 @@ namespace EmpWage_OOPS
             //Making Object of CompEmpWage to call Different Companies ComputeWage method.
             EmpWageBuilderArrayList empWageBuilderArrayList = new EmpWageBuilderArrayList();
             empWageBuilderArrayList.AddEmpInArrayList(80, 20, 20, "TATA");
-            empWageBuilderArrayList.AddEmpInArrayList(700, 20, 20, "MARUTI");
+            empWageBuilderArrayList.AddEmpInArrayList(70, 20, 20, "MARUTI");
             empWageBuilderArrayList.AddEmpInArrayList(90, 20, 20, "FORD");
-            empWageBuilderArrayList.GetEmpWage();
+            //Calling function to fetch salary by passing company name.
+            empWageBuilderArrayList.GetEmpWage("MARUTI");
         }
     }
 }
