@@ -58,6 +58,7 @@ namespace EmpWage_OOPS
                         break;
                 }
                 e1.dailyWage[workingdays] = workingHourPerDay * e1.wagePerHour;
+                Console.WriteLine($"Employee from {e1.companyName} earns {e1.dailyWage[workingdays]} at day {workingdays + 1}.");
             workingHours = workingHours + workingHourPerDay;
             workingdays++;
             }

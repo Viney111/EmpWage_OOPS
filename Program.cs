@@ -12,9 +12,9 @@ namespace EmpWage_OOPS
             Console.WriteLine("Welcome to EmpWage by OOPS Program");
             //Making Object of CompEmpWage to call Different Companies ComputeWage method.
             EmpWageBuilderArrayList empWageBuilderArrayList = new EmpWageBuilderArrayList();
-            empWageBuilderArrayList.AddEmpInArrayList(100, 20, 20, "TATA");
-            empWageBuilderArrayList.AddEmpInArrayList(100, 20, 20, "MARUTI");
-            empWageBuilderArrayList.AddEmpInArrayList(100, 20, 20, "FORD");
+            empWageBuilderArrayList.AddEmpInArrayList(80, 20, 20, "TATA");
+            empWageBuilderArrayList.AddEmpInArrayList(700, 20, 20, "MARUTI");
+            empWageBuilderArrayList.AddEmpInArrayList(90, 20, 20, "FORD");
             empWageBuilderArrayList.GetEmpWage();
 
         }
