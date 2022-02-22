@@ -14,6 +14,7 @@ namespace EmpWage_OOPS
         public int wagePerHour;
         public string companyName;
         public int totalWage;
+        public int[] dailyWage;
 
         public CompEmpWage(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName)
         {
@@ -21,8 +22,9 @@ namespace EmpWage_OOPS
             this.totalWorkingDays = totalWorkingDays;
             this.wagePerHour = wagePerHour;
             this.companyName = companyName;
-
+            dailyWage = new int[totalWorkingDays];            
         }
+        
 
     }
 }

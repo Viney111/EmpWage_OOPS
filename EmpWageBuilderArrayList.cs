@@ -1,43 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EmpWage_OOPS
 {
-    public interface IEmpWageBuilder
+    internal class EmpWageBuilderArrayList
     {
-        public void AddEmpWageInArray(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName);
-        public void GetEmpWage();
-
-    }
-    //CONSTATNTS
-    internal class EmpWageBuilderArray : IEmpWageBuilder
-    {
+        //CONSTATNTS
         const int ISPRESENT = 1;
         const int PARTTIME = 2;
         const int FULLDAYHOUR = 8;
         const int PARTTIMEHOUR = 4;
-        //Array Field
-        public CompEmpWage[] compEmpWageArray;
 
-        //Array Constructor
-        public EmpWageBuilderArray(int size)
+        //ARRAYLIST FIELD
+        ArrayList empWageArrayList = new ArrayList();
+        public void AddEmpInArrayList(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName)
         {
-            this.compEmpWageArray = new CompEmpWage[size];
-        }
-        int i = 0;
-        public void AddEmpWageInArray(int totalWorkingHours, int totalWorkingDays, int wagePerHour, string companyName)
-        {
-            compEmpWageArray[i] = new CompEmpWage(totalWorkingHours, totalWorkingDays, wagePerHour, companyName);
-            i++;
+            empWageArrayList.Add(new CompEmpWage(totalWorkingHours, totalWorkingDays, wagePerHour, companyName));
         }
         public void GetEmpWage()
         {
-            foreach(var emp in compEmpWageArray)
+            foreach(var emp in empWageArrayList)
             {
-                ComputeWage(emp);
+                ComputeWage((CompEmpWage)emp);
             }
         }
         public void ComputeWage(CompEmpWage e1)
@@ -69,12 +57,14 @@ namespace EmpWage_OOPS
                         workingHourPerDay = 0;
                         break;
                 }
-                workingHours = workingHours + workingHourPerDay;
-                workingdays++;
+                e1.dailyWage[workingdays] = workingHourPerDay * e1.wagePerHour;
+            workingHours = workingHours + workingHourPerDay;
+            workingdays++;
             }
             e1.totalWage = workingHours * e1.wagePerHour;
-            Console.WriteLine($"Employee from {e1.companyName} company earns {e1.totalWage}");
+        Console.WriteLine($"Employee from {e1.companyName} company earns {e1.totalWage}");
         }
+
 
     }
 }
