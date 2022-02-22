@@ -16,7 +16,6 @@ namespace EmpWage_OOPS
             empWageBuilderArrayList.AddEmpInArrayList(700, 20, 20, "MARUTI");
             empWageBuilderArrayList.AddEmpInArrayList(90, 20, 20, "FORD");
             empWageBuilderArrayList.GetEmpWage();
-
         }
     }
 }
